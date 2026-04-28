@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سيستم كاشير - الهنا ماركت</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="admin-controls">
+        <input type="text" id="itemCode" placeholder="كود الصنف">
+        <input type="text" id="itemName" placeholder="اسم الصنف">
+        <input type="number" id="itemPrice" placeholder="السعر">
+        <input type="number" id="itemQty" placeholder="الكمية">
+        <input type="number" id="discountInput" placeholder="الخصم">
+
+        <button class="btn-add" onclick="addItem()">إضافة +</button>
+        <button class="btn-clear" onclick="clearAll()">مسح الكل</button>
+    </div>
+
+    <div class="header">
+        <div class="logo-box">
+            
+            <div>
+                <h1>الهنا ماركت</h1>
+                <p>ميت بدر حلاوة - الشارع الرئيسي</p>
+            </div>
+        </div>
+        <div style="text-align:left;">
+            <p><strong>فاتورة مبيعات</strong></p>
+        </div>
+    </div>
+
+    <div class="invoice-details">
+        <div>
+            <strong>رقم المستند:</strong>
+            <span id="invoiceNumber"></span><br>
+
+            <strong>اسم العميل:</strong>
+            عميل نقدي<br>
+
+            <strong>العنوان:</strong>
+            Tanta, EG
+        </div>
+
+        <div style="text-align:left;">
+            <strong>التاريخ:</strong>
+            <span id="date"></span><br>
+
+            <strong>المندوب:</strong>
+            مصطفى مجدي منصور<br>
+
+            <strong>الكود:</strong>
+            461127
+        </div>
+    </div>
+
+    <table class="table-wrapper">
+        <thead>
+            <tr>
+                <th>كود</th>
+                <th>الاسم</th>
+                <th>الكمية</th>
+                <th>السعر</th>
+                <th>الإجمالي</th>
+                <th class="delete-column">حذف</th>
+            </tr>
+        </thead>
+
+        <tbody id="billBody"></tbody>
+    </table>
+
+    <div class="summary-section">
+
+        <div class="summary-row">
+            <span>الإجمالي قبل الخصم:</span>
+            <span id="subTotal">0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>ضريبة القيمة المضافة (14%):</span>
+            <span id="tax">0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>إجمالي الخصومات:</span>
+            <span id="discount">0</span>
+        </div>
+
+        <div class="summary-row final-total">
+            <span>إجمالي المستحق:</span>
+            <span id="grandTotal">0</span>
+        </div>
+
+    </div>
+
+    <div class="actions">
+    <button onclick="saveInvoice()" class="save-btn">
+        حفظ 💾
+    </button>
+
+    <button onclick="window.print()" class="print-btn">
+        طباعة 🖨️
+    </button>
+</div>
+    <div class="footer-note">
+        <p>
+            استلمت البضاعة الموضحة أعلاه تامة التجميد
+            وفي حالة جيدة وخالية من أي عيوب ظاهرة
+        </p>
+
+        <p>
+            شكراً لتعاملكم مع الهنا ماركت
+        </p>
+    </div>
+
+</div>
+
+<script src="/main.js"></script>
+</body>
+</html>
