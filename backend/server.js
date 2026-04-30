@@ -1,18 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const path = require("path");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// ✅ ربط الفولدر public
-app.use(express.static("../public"));
 
-// ✅ هنا بقى نحط الكود بتاعك 👇
+app.use(express.static(path.join(__dirname,"..")));
+
+
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/../public/index.html");
+    res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 // routes
