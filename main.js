@@ -9,12 +9,7 @@ window.onload = function () {
     document.getElementById("invoiceNumber").innerText =
     "INV-" + Math.floor(Math.random() * 100000);
 
-    // ✅ تحميل الداتا القديمة
-    const savedData = localStorage.getItem("invoiceData");
-
-    if (savedData) {
-        document.getElementById("billBody").innerHTML = savedData;
-    }
+    localStorage.removeItem("invoiceData");
 
     updateTotals();
 };
@@ -72,10 +67,17 @@ function saveInvoice() {
     .then(data => {
         btn.innerText = "تم الحفظ ✅";
         setTimeout(() => {
-            btn.innerText = "حفظ الفاتورة 💾";
+            btn.innerText = "حفظ 💾";
             btn.disabled = false;
         }, 2000);
-    });
+    })
+    .catch(err => {
+        alert("حصل خطأ");
+        btn.innerText = "حفظ 💾";
+        btn.disabled = false;
+        console.log(err);
+     });
+
 }
 
 function formatCurrency(value) {
@@ -172,17 +174,6 @@ function saveData() {
         document.getElementById("billBody").innerHTML
     );
 }
-
-window.onload = function () {
-    const savedData = localStorage.getItem("invoiceData");
-
-    if (savedData) {
-        document.getElementById("billBody").innerHTML = savedData;
-    }
-
-    updateTotals();
-};
-
 document.getElementById("discountInput").addEventListener("input",
 updateTotals
 );
